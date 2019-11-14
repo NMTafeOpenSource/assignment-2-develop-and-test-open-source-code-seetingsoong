@@ -1,0 +1,5 @@
+create DATABASE nmt_cars;
+grant all PRIVILEGES on *.* to 'hilarysoong'@'localhost'
+IDENTIFIED by 'SecretPassword123';
+use nmt_cars;
+create table `Vehicles`(`id` BIGINT AUTO_INCREMENT NOT NULL UNSIGNED, `make` VARCHAR(64) NOT NULL DEFAULT "UNKNOWN", `model` VARCHAR(128) NOT NULL, `release_year` INTEGER(4) not NULL ZEROFILL, `registration` VARCHAR(16) NOT NULL DEFAULT 1 UNSIGNED,`fuel` VARCHAR(8) NOT NULL,`tank_size` DECIMAL NULL UNSIGNED, `initials` VARCHAR(4) NOT NULL DEFAULT "XXX", `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, `updated_at` TIMESTAMP NULL,  PRIMARY KEY(`id`));
