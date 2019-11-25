@@ -38,11 +38,11 @@ namespace TDD_ASS2_Pt1
         public void FillTable(string searchTerm = "")
         {
             string connectionStr = "server=localhost;" +
-                                    "user=nmt_demo_user;" +
-                                    "database=nmt_demo;" +
+                                    "user=hilarysoong;" +
+                                    "database=nmt_cars;" +
                                     "port=3306;" +
-                                    "password=Password1";
-            string sql = "select * from locations";
+                                    "password=SecretPassword123";
+            string sql = "select * from vehicles";
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 sql += " where location_name like '%" + searchTerm.Trim() + "%'";
