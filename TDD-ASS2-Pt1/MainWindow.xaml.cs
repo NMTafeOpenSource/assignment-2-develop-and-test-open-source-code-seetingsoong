@@ -14,24 +14,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace TDD_ASS2_Pt1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            Vehicle v = new Vehicle("Ford", "T812", 2014);
-
-            // Vehicle sample distance
-            v.addFuel(new Random().NextDouble() * 10, 1.3);
-
-            v.printDetails();
-           Console.WriteLine("\n\n");
             FillTable();
         }
 
@@ -42,7 +36,7 @@ namespace TDD_ASS2_Pt1
                                     "database=nmt_cars;" +
                                     "port=3306;" +
                                     "password=SecretPassword123";
-            string sql = "select * from vehicles";
+            string sql = "select id,make,model,release_year,registration,tank_size,fuel from vehicles";
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 sql += " where location_name like '%" + searchTerm.Trim() + "%'";
@@ -92,6 +86,14 @@ namespace TDD_ASS2_Pt1
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            Add_Vehicle winAdd = new Add_Vehicle();
+            winAdd.ShowDialog();
+            winAdd.Owner = this;
+            FillTable(txtbx_Search.Text);
         }
     }
 }
