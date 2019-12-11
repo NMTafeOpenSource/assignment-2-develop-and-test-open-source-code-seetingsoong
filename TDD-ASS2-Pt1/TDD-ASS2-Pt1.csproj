@@ -93,22 +93,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Add Vehicle.xaml.cs">
-      <DependentUpon>Add Vehicle.xaml</DependentUpon>
+    <Compile Include="CarList.xaml.cs">
+      <DependentUpon>CarList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rental.cs" />
-    <Compile Include="Rental_List.xaml.cs">
+    <Compile Include="Rentals\Bookings.cs" />
+    <Compile Include="Vehicles\Add_Vehicle.xaml.cs">
+      <DependentUpon>Add_Vehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\Edit_Vehicle.xaml.cs">
+      <DependentUpon>Edit_Vehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rentals\Rental.cs" />
+    <Compile Include="Rentals\Rental_List.xaml.cs">
       <DependentUpon>Rental_List.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RentCalculation.xaml.cs">
+    <Compile Include="Rentals\RentCalculation.xaml.cs">
       <DependentUpon>RentCalculation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rent_The_Car.xaml.cs">
+    <Compile Include="Rentals\Rent_The_Car.xaml.cs">
       <DependentUpon>Rent_The_Car.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service.cs" />
-    <Compile Include="Vehicle.cs" />
-    <Page Include="Add Vehicle.xaml">
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Vehicles\Vehicle.cs" />
+    <Page Include="CarList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vehicles\Add_Vehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vehicles\Edit_Vehicle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,21 +135,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FuelPurchase.cs" />
-    <Compile Include="Journey.cs" />
+    <Compile Include="Fuel_Purchases\FuelPurchase.cs" />
+    <Compile Include="Rentals\Journey.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Rental_List.xaml">
+    <Page Include="Rentals\Rental_List.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RentCalculation.xaml">
+    <Page Include="Rentals\RentCalculation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Rent_The_Car.xaml">
+    <Page Include="Rentals\Rent_The_Car.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

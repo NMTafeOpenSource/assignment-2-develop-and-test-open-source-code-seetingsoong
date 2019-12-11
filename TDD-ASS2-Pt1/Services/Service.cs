@@ -16,6 +16,9 @@ namespace TDD_ASS2_Pt1
         private int serviceCount = 0;
         private bool requiredService = false;
 
+        //PK id - field
+        //FK vehicle id
+
         public Service(bool contentLoaded, int lastServiceOdometerKm, int serviceCount, bool requiredService)
         {
             //_contentLoaded = contentLoaded;
@@ -28,6 +31,8 @@ namespace TDD_ASS2_Pt1
         // TODO add lastServiceDate
 
         // get and set methods
+
+        //methods- service odo reading, service at, created at, updated at
         public int ServiceCount
         {
             get { return serviceCount; }

@@ -9,6 +9,7 @@ namespace TDD_ASS2_Pt1
 
     public class Journey//Journey and Rental are combined
     {
+        //PK id, FK booking id
 
         private double kilometers;
 
@@ -40,6 +41,15 @@ namespace TDD_ASS2_Pt1
             return kilometers;
         }
 
+        //methods 
+        //journey started at
+        //journey ended at
+        //journey start odo reading
+        //journey end odo reading
+        //journey from
+        //journey to
+        //created at
+        //updated at
     }
 
 }
