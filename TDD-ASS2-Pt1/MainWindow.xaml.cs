@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace TDD_ASS2_Pt1
 {
@@ -23,17 +25,35 @@ namespace TDD_ASS2_Pt1
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public static List<Vehicle> vehicleList = new List<Vehicle>();
+        public static List<Vehicle> vehicleList;
+        public SeriesCollection lineData;
         
 
         public MainWindow()
         {
             InitializeComponent();
-                   
+
+            vehicleList = Vehicle.LoadVehicles();
+            VehiclesInformationCard.Title = "Vehicles";
+            VehiclesInformationCard.BackgroundColour = "Purple";
+            VehiclesInformationCard.ValueProperty = vehicleList.Count.ToString();
+
+            lineData = new SeriesCollection
+                {
+                new LineSeries
+                {
+                    Title = "Series 2",
+                    Values = new ChartValues<double> { 6, 7, 3, 4 ,6 },
+                    PointGeometry = null
+
+                }
+            };
+            VehiclesInformationCard.SeriesData = lineData;
 
         }
 
        
+
         private void btn_toVehicleList_Click(object sender, RoutedEventArgs e)
         {
             CarList winCarList = new CarList();
@@ -49,7 +69,13 @@ namespace TDD_ASS2_Pt1
 
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void VehiclesInformationCard_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CarList winList = new CarList();
+            winList.ShowDialog();
         }
     }
 }

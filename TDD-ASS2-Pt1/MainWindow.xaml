@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TDD_ASS2_Pt1"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="850">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button Content="settings" />
@@ -42,31 +42,25 @@
 
         <MenuItem Header="Rental"/>
         </Menu>
-
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
-            <StatusBarItem>
-                <TextBlock x:Name="MessageTextBlock">Loading...</TextBlock>
-            </StatusBarItem>
-            <Separator Grid.Column="1"/>
-            <StatusBarItem Grid.Column="2">
-                <TextBlock x:Name="txb_RecordNumber">Set..</TextBlock>
-            </StatusBarItem>
-        </StatusBar>
+        
+       
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="100"/>
+                <!--<RowDefinition Height="1*"/>-->
+            </Grid.RowDefinitions>
+            <local:InformationCard x:Name="VehiclesInformationCard"
+                                   Grid.Row="0" Grid.Column="0" 
+                                   MouseDoubleClick="VehiclesInformationCard_MouseDoubleClick">
+            </local:InformationCard>
             
         </Grid>
     </DockPanel>

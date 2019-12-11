@@ -14,61 +14,16 @@ namespace TDD_ASS2_Pt1
     {
         public Add_Vehicle()
         {
-            InitializeComponent();
-            OpenConnection();
+            InitializeComponent();           
             tb_regoError.Text = tb_makeError.Text = tb_yearError.Text = tb_modelError.Text = tb_ftError.Text
                 = tb_tankError.Text = string.Empty;
 
         }
-        Vehicle newVehicle;
-        MySqlConnection connection;
-        List<Vehicle> VehicleList;
-        private string connStr = "server=localhost;user=hilarysoong;database=nmt_cars;password=SecretPassword123";
+        
+      
+       
 
-        private void OpenConnection()
-        {
-            connection = new MySqlConnection(connStr);
-            connection.Open();
-        }
-
-        private void CloseConnection()
-        {
-            connection.Close();
-        }
-
-        //insert data to vehicles table in Mysql database
-        private bool AddVehicleToDB(string vMake, string vModel, string vYear, string vRego, string fuelType, string tankSize)
-        {
-            //string query = "INSERT INTO nmt_cars.vehicles(make, model, release_year, registration, fuel) VALUES('" + tbx_make.Text + "','" + tbx_model.Text + "','" + tbx_year.Text + "','" + tbx_rego.Text + "','" + tbx_fuel.Text + "')";
-            string query = "INSERT INTO nmt_cars.vehicles(make, model, release_year, registration, fuel, tank_size) VALUES('" + vMake + "','" + vModel + "','" + vYear + "','" + vRego + "','" + fuelType + "','" + tankSize + "')";
-
-            MySqlCommand command = new MySqlCommand(query, connection);
-            try
-            {
-                command.ExecuteNonQuery();
-             
-            }
-            catch (Exception)
-            {               
-                return false;
-            }
-            return true;
-        }
-
-        //find if the data exist in the table
-        private bool FindRegoInDB(string vRego)
-        {
-            string sql = "select 1 from vehicles where registration = '" + vRego + "'";
-            using (MySqlCommand command = new MySqlCommand(sql,connection))
-            {
-                if(command.ExecuteScalar()!= null)
-                {
-                    return true;
-                }               
-            }
-            return false;
-        }
-
+      
         //public void CreateVehicle(string make, string model, string rego, string year, string tank, string fuelType)
         //{
            
@@ -124,17 +79,7 @@ namespace TDD_ASS2_Pt1
             return output;
         }
 
-        private bool checkIfRegoinDB(string vRego)
-        {
-            bool output = true;
-            if (FindRegoInDB(vRego))
-            {
-                MessageBox.Show("Vehicle already exist in the system");
-                output = false;
-            }
-            return output;
-        }
-
+       
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -143,7 +88,7 @@ namespace TDD_ASS2_Pt1
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            CloseConnection();
+            
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -168,21 +113,21 @@ namespace TDD_ASS2_Pt1
             else
             {
                 ValidateVehicle(rego, make, year, model, tank, fuel);
-                checkIfRegoinDB(rego);
+                
             }
  
             if (tb_regoError.Text.Length + tb_makeError.Text.Length + tb_yearError.Text.Length + tb_modelError.Text.Length + tb_tankError.Text.Length + tb_ftError.Text.Length == 0)
 
             {
-                if (AddVehicleToDB(make, model, year, rego, fuel, tank))
-                {
-                    MessageBox.Show("Vehicle has been successfully added to the system");
-                    btn_Cancel_Click(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("adding fail", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                //if (AddVehicleToDB(make, model, year, rego, fuel, tank))
+                //{
+                //    MessageBox.Show("Vehicle has been successfully added to the system");
+                //    btn_Cancel_Click(sender, e);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("adding fail", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //}
 
             }
 
