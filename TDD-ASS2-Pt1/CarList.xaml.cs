@@ -47,7 +47,8 @@ namespace TDD_ASS2_Pt1
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
-
+            Add_Vehicle winAdd = new Add_Vehicle();
+            winAdd.ShowDialog();
         }
 
         private void BtnClearSearch_Click(object sender, RoutedEventArgs e)
