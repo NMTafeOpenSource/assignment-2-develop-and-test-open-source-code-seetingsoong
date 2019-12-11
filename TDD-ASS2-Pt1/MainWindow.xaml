@@ -21,6 +21,28 @@
     </Controls:MetroWindow.RightWindowCommands>
 
     <DockPanel>
+        <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_File">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="Exit"  Click="Quit_Click"  />
+        </MenuItem>
+        <MenuItem Header="_Edit">
+            <MenuItem Header="_Cut" />
+            <MenuItem Header="_Copy" />
+            <MenuItem Header="_Paste" />
+        </MenuItem>
+            <MenuItem Header="_Vehicles">
+                <MenuItem Header="_Add Vehicle" Click="btn_Add_Click" />
+                <MenuItem Header="_Vehicle List" Click="btn_toVehicleList_Click" />
+            </MenuItem>
+            <MenuItem x:Name="Services" Header="Services"/>
+
+        <MenuItem Header="Rental"/>
+        </Menu>
+
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -40,28 +62,11 @@
                 <TextBlock x:Name="MessageTextBlock">Loading...</TextBlock>
             </StatusBarItem>
             <Separator Grid.Column="1"/>
-            <StatusBarItem Grid.Column="2">Set..</StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <TextBlock x:Name="txb_RecordNumber">Set..</TextBlock>
+            </StatusBarItem>
         </StatusBar>
         <Grid>
-            <Button x:Name="btn_Add" Content="Add" HorizontalAlignment="Left" Margin="460,325,0,0" VerticalAlignment="Top" Width="75" Click="btn_Add_Click"/>
-            <Button x:Name="btn_Rental" Content="Rent" HorizontalAlignment="Left" Margin="295,325,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-            <TextBox x:Name="txtbx_Search" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="76,8,0,0" TextChanged="Txtbx_Search_TextChanged"/>
-            <Label x:Name="label" Content="Search:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="23" Width="66"/>
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="261"
-                      Margin="10,59,0,0" VerticalAlignment="Top" MinWidth="400" 
-                      ItemsSource="{Binding}" MouseDoubleClick="DataGrid_MouseDoubleClick"
-                      AutoGenerateColumns="False"
-                      AlternatingRowBackground="Chartreuse" SelectionChanged="DataGrid_SelectionChanged" Width="772">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="72" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Make" Width="*" Binding="{Binding make}"/>
-                    <DataGridTextColumn Header="Model" Width="*" Binding="{Binding model}"/>
-                    <DataGridTextColumn Header="Year" Width="*" Binding="{Binding release_year}"/>
-                    <DataGridTextColumn Header="Fuel Type" Width="*" Binding="{Binding fuel}"/>
-                    <DataGridTextColumn Header="Tank Size" Width="*" Binding="{Binding tank_size}"/>
-                </DataGrid.Columns>
-
-            </DataGrid>
             
         </Grid>
     </DockPanel>

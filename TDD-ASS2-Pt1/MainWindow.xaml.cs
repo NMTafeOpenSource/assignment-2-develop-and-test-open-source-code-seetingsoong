@@ -23,77 +23,33 @@ namespace TDD_ASS2_Pt1
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        public static List<Vehicle> vehicleList = new List<Vehicle>();
+        
+
         public MainWindow()
         {
             InitializeComponent();
-            FillTable();
+                   
+
         }
 
-        public void FillTable(string searchTerm = "")
+       
+        private void btn_toVehicleList_Click(object sender, RoutedEventArgs e)
         {
-            string connectionStr = "server=localhost;" +
-                                    "user=hilarysoong;" +
-                                    "database=nmt_cars;" +
-                                    "port=3306;" +
-                                    "password=SecretPassword123";
-            string sql = "select id,make,model,release_year,registration,tank_size,fuel from vehicles";
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                sql += " where location_name like '%" + searchTerm.Trim() + "%'";
-            }
-
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(connectionStr))
-                {
-                    connection.Open();
-
-                    using (MySqlCommand cmSel = new MySqlCommand(sql, connection))
-                    {
-                        DataTable dt = new DataTable();
-                        MySqlDataAdapter da = new MySqlDataAdapter(cmSel);
-                        da.Fill(dt);
-                        dataGrid.DataContext = dt;
-                    }
-                    connection.Close();
-                }
-                MessageTextBlock.Text = "Ready";
-            }
-            catch(Exception e)
-            {
-                MessageTextBlock.Text = e.Message;
-            }
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            Rent_The_Car winRent = new Rent_The_Car();
-            winRent.ShowDialog();
-            winRent.Owner = this;
+            CarList winCarList = new CarList();
+            winCarList.ShowDialog();
             
-        }
-
-        private void Txtbx_Search_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            FillTable(txtbx_Search.Text);
-        }
-
-        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            Add_Vehicle winAdd = new Add_Vehicle();
-            winAdd.ShowDialog();
-            winAdd.Owner = this;
-            FillTable(txtbx_Search.Text);
+            Add_Vehicle winAddVehicle = new Add_Vehicle();
+            winAddVehicle.ShowDialog();
+        }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

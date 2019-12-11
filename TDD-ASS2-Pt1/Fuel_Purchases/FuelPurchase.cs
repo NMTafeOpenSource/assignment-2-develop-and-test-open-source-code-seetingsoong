@@ -8,6 +8,7 @@ namespace TDD_ASS2_Pt1
 {
     public class FuelPurchase
     {
+        //PK id, FK booking id
         private double fuelEconomy;
         private double litres = 0;
         private double cost = 0;
@@ -38,6 +39,12 @@ namespace TDD_ASS2_Pt1
             this.litres += amount;
             this.cost += price;
         }
+
+        //methods
+        //fuel quantity(L)
+        //fuel price($/L)
+        //created at
+        //updated at
     }
 
 }
